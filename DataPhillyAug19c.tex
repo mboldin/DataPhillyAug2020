@@ -1,0 +1,588 @@
+\documentclass{beamer}
+
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash}p{#1}}
+
+\mode<presentation> {
+
+\usepackage{setspace}
+\usepackage{graphicx} 
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{color}
+
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{Madrid}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\title[Topic]{
+	How Will We Know We Are in Recovery? \\
+	{\small 
+	Applying Data Science to the Analysis of the Business Cycle \\ (and the Covid-19 Pandemic)}
+} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author[Michael Boldin]{}% Your name
+\institute[Fox School of Business, Temple University] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Michael Boldin, PhD. \\	
+Fox School of Business, Temple University\\
+Department of Statistical Science 
+}
+\date{August 19, 2020 \\ DataPhilly} 
+
+\setbeamerfont{caption}{size=\tiny}
+
+\begin{document}
+\setbeamercolor{itemize item}{fg=blue}
+
+\begin{frame}
+\titlepage % Title page as the first slide
+\end{frame}
+
+
+\begin{frame}
+	
+	Outline / todo
+	
+	--Intro
+	
+	--Chart 1a, 1b, 1c
+	
+	--terms
+	
+    --Charts2
+    
+    x-- SS equations
+    -- DFM results
+    
+    x--MSM slide
+    -- MSM unrate prob
+
+    x--DFM 2 slide
+    
+    -- MSA versions
+    -- service sector employ by msa
+     
+    	
+%	to add
+%	Unrate, payroll emp
+%	Unemplyment claims
+%	Service sector
+%	Regional charts   	
+%	Headlines February
+%	NBER methods
+%
+%	CI, linear DFM
+%	nonlinear DFM
+%	basic MSM
+%	expanded dynamic switching/clustering 
+%	SIR
+%	US map, PA-NY-NJ
+%	PLM results
+%	Data ideas
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	Research Project
+	{\Large How Will We Know We Are in Recovery?} 
+	
+	\medskip
+	Underlying views, facts, assumptions
+	\begin{enumerate}
+	\item Recession started in March.
+	\item This recession is different, and current economic data resembles outliers (relative time series history).  
+	\item A true economic recovery will not occur until the public feels the end to the pandemic is insight or over.
+	\item Need to use the data (Covid infections and economic indicators) we have, which is limited in many ways.
+	\end{enumerate}
+		
+\end{frame}
+
+
+\begin{frame}
+	
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\linewidth]{images/UNRATE1a}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\linewidth]{images/UNRATE1b}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\linewidth]{images/UNRATE1c}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introduction: How Will We Know We Are in Recovery?}
+	
+	What I will cover:
+	\begin{enumerate}
+			\item Advice -- applying data science to a research project.  
+			\item Explain how the economics profession looks at business cycles -- not necessarily the same as Wall Street chief economists and other quoted in the business press or on TV.
+			\item Discuss  and show available data:  economic indicators and publicly available Covid stats (mainly the Johns Hopkins set).
+			\item Present modeling ideas and  preliminary analysis steps, including why analysis at the County and Metropolitan (MSA) level and not the State level) is appropriate.	
+			\item Discuss insights from theoretical models.		
+	\end{enumerate}
+
+Suggestions, comments, and help are welcome
+GITHUB: https://github.com/mboldin/DataPhillyAug2020
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{More?}
+	
+Joint research with Prof. Marc Sobel (Temple Univ.) \\
+    -- Dirichlet Process Clustering and Bayesian Perspective  
+
+\medskip
+\medskip
+
+If I had more time:
+\begin{itemize}
+	\item Talk about how seasonal effects\\
+	 and seasonal adjustments to\\
+	 economic data matter.  
+	\item Discuss estimation of statistical clustering\\
+	 and the bayesian advantages.
+	\item Discuss current research by others on the topic.
+	\item Nitty gritty of government data sources \\
+	and alternatives.
+	\item Rant on how the BLS and Census should join\\
+	 the 21st century to produce better \\
+	 and more timely labor force statistics.
+\end{itemize}
+			
+\end{frame}
+
+\begin{frame}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.70\linewidth]{images/data-scientist-venn-diagram}
+		%\caption[Data Science Venn Diagram]{}
+	\end{figure}
+
+{\tiny 
+Graphic by Steven Kolassa,\\   
+compare to Drew Conway diagram of Math and Statistics, Hacking, Substantive Expertise
+}
+ 
+\end{frame}
+		
+\begin{frame}
+\frametitle{Project Planning and Data Science Skills}
+
+\begin{wrapfigure}{r}{0.25\linewidth}
+	
+		\includegraphics[width=1.0\linewidth]{images/data-scientist-venn-diagram}
+
+\end{wrapfigure}
+
+
+\medskip
+
+Some Advice
+
+{\small
+\begin{itemize}
+	\item 
+	Bad data management and misunderstanding the data often ruins good projects.
+	\item 
+	Learn at least two programming languages. EXCEL does not count.
+	\item 
+	Area expertise and understanding 'theory' matters--especially in understanding data limitations. 
+	\item
+	To find a modeling sweet spot between overly simple models and overfitting, think hard about the applicable math and statistic methods. 
+	\item 
+	Data visualization helps at all stages, but don't pretend fancy charts alone yield good communication.   
+\end{itemize}
+}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Business Cycle Tracking}
+
+{\large Dating Recessions}
+
+\begin{itemize}
+	\item Rule of thumb: GDP 2-Quarter rule (for recessions),\\ Unemployment rate movements, Coincident Index patterns. 
+	\item NBER Committee -- decides on peak and trough dates with no formal rules.
+	\item Dynamic Factor Model (linear)
+	\item Switching Model (nonlinear)
+	\item Combined: Factor(s) + Switching
+\end{itemize}	
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dynamic Factor Model}
+	
+	Stock-Watson  Coincident Index
+	
+\medskip
+State Equation -- Common Unobserved Dynamic Factor	\\
+
+\hspace{.25in} 
+$ c_{t} = a * c_{t-1} + v_{t} $  
+\hspace{.25in} 
+$  v \sim \mathcal{N}(0,1)  $
+	
+\medskip
+Measurement Equations 	\\
+
+\hspace{.25in} 
+$ y_{i,t} =  b_{i} * c_{t} + e_{i,t}  $
+\hspace{.25in} 
+$  e \sim \mathcal{N}(0,\Sigma)  $
+\\
+
+\hspace{.25in} 
+for $i = 1,2, .. K$ indicators
+	
+\medskip
+Parameters estimated using 
+\begin{itemize}
+	\item 
+	Kalman Filter
+	\item 
+	Maximum Likelihood Estimation (MLE)
+\end{itemize}
+	
+\medskip
+I used the Python statsmodels module \\
+and the DynamicFactor() method
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Switching Model}
+	
+Measurement Equation -- GDP or unemployment rate
+\\
+\medskip
+\hspace{.25in} 
+ $ un_{i,t} =  a(s_{t}) + b(s_{t}) * un_{t-1} + e_{t}   $  
+\hspace{.25in}  
+ $  e \sim \mathcal{N}(0,\sigma^2)  $
+ 	
+\medskip
+\hspace{.25in} 
+s = 1 Recession, unemployment rate tends to rise \\
+\hspace{.25in} 
+s = 2 Expansion, unemployment rate tends to fall \\
+  
+\medskip
+Markov process probability of regime switching:
+\\
+\hspace{.25in} 
+    $ p(s_{t+1}=1|s_{t}=2)$,
+    \hspace{.10in}
+    $ p(s_{t+1}=2|s_{t}=1) $
+\\
+
+\textit{expansion-to-recession} or  \textit{recession-to-expansion} 
+\\
+Only depends on the current 'state' 
+
+\medskip
+\medskip
+More than 2 states or regimes are possible: \\
+\hspace{.25in} 
+  3: recession-recovery-expansion 
+\\
+\hspace{.25in} 
+  4: recession-recovery-expansion + stagnation 
+\\
+       
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dynamic Factor Model + Regime Switching}
+	
+\medskip
+State Equation -- Common Unobserved Dynamic Factor	\\
+	
+\hspace{.25in} 	
+	$ c_{t} = a_{0}(s) + a_{1}(s) * c_{t-1} + v_{t} $  
+	\hspace{.25in} 
+	$  v \sim \mathcal{N}(0,\sigma_s^2)  $
+	
+\medskip
+Measurement Equations 	\\
+\hspace{.25in} 
+	$ y_{i,t} =  b_{0}(s) + b_{1}(s)  * c_{t} + e_{i,t}  $
+	\hspace{.25in} 
+	$  e \sim \mathcal{N}(0,\Sigma(s))  $
+	\\
+\hspace{.25in} 
+	for $i = 1,2, .. K$ indicators
+	and s = 1 recession or 2 expansion,
+	
+\medskip
+Random innovations in the state equation ($v_t$) \\
+are subtle (relatively small), while regime effects (through s) can yield large 'breaks'.
+	
+	\medskip
+	Parameters estimation requires alternative Kalman Filter or a Particle Filter
+	
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{S-I-R Virus Model}
+	
+{\large	S-I-R is the simplest case}
+	
+	\hspace{.20in} 3 containers for N individuals in total population
+	
+	\begin{itemize}
+	\item
+	\textbf{S}usceptible (not immune)\\
+	
+	\item
+	\textbf{I}nfectious\\
+	
+	\item
+	\textbf{R}ecovered (and immune) \\
+	
+	\end{itemize}
+
+\medskip
+	Other versions add \\
+	\begin{itemize}
+	\item
+	Exposed before Infectious (S-E-I-R) \\
+	\item
+	Quarantined and Hospitalized containers 
+	\item
+	Death besides Recovered \\
+	\item
+	Return to Susceptible from Recovered is possible  
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{S-I-R Virus Model}
+	
+%\onehalfspacing
+	
+{\large Equations for S, I, \& R} \\
+
+Laws of Motion:\\
+
+	$ dS =  a * I * (S/N) $ \\
+
+	$ dI = a * I * (S/N)   - b * I $ \\
+	
+	$ dR = b * I $ \\
+	
+{\small
+Fixed parameters\\
+	a = number of contacts of N per day \\  \hspace{.30in} * probability a contract of an S individual results in an infection \\	
+	b = recovery rate  = 1 / (days infectious)\\
+}
+
+\medskip
+Easiest to solve the continuous time version.\\
+Need to discreetize to 'apply' to data,\\
+ but data is not in the S, I, R form 
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{S-I-R Virus Model}
+	
+	Insights
+	\begin{itemize}
+		\item Ratio a/b is the key \\
+		A high infection rate  \& long infection time is bad.  
+		\item Herd immunity effects: I falls to 0 when $(S/N) * (a/b) < 1$. 
+		\item Hard to change number infected \\
+		-- but can lower the maximum I/N, \\
+		which elongates the infection time (flattening the curve)
+		\item 
+		Can let the a parameter vary as peiopel change their behavior (social distancing) so R(t) = a(t)/b can be estimated as a time-series.  
+	\end{itemize}
+	
+	
+\end{frame}
+
+\begin{frame}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\linewidth]{images/SIR1}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\linewidth]{images/SIR2}
+	\end{figure}	
+\end{frame}
+
+\begin{frame}	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\linewidth]{images/SIR3}
+	\end{figure}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Infection Model Fitting at County Level}
+	
+Dependent variable:\\
+\begin{itemize}
+	\item Change in confirmed covid cases per 1000 
+\end{itemize}
+		
+\medskip
+
+Explanatory variables:
+\begin{itemize}
+	\item lag of change in confirmed covid cases per 1000  (+)
+	\item Lag of confirmed covid cases (to date) per 1000 (-?)
+	\item Population density per square mile of land (+)
+	\item Percent of population with HS diploma (-)
+	\item Median household income (-)
+	\item Unemployment rate average in 2019 (?) \\
+	... 
+\end{itemize}
+	
+In a simple linear panel model, almost all of the county level explanatory variables seem statistically significant, but $R^2$ is only around 0.25. 	
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Infection Model Fitting at County Level}
+
+Dependent variable:\\
+\begin{itemize}
+	\item Change in confirmed covid cases per 1000 
+\end{itemize}
+
+\medskip
+
+Allowing for 'regimes' that represent county groupings  or clusters is attractive for a variety of reasons.
+\\
+\begin{itemize}
+	\item Unsure about the proper number of regimes
+	\item So a Dirichlet Process (DP) model with infinite potential clusters is being developed.
+	\item Using Bayesian priors to solve estimation problems with the unconstrained model. 
+\end{itemize}
+   	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Full Model -- Economic Indicators\\
+		 + Covid Cases by County }
+	
+	
+{\large
+	Possible County level clusters (regimes)\\
+}	
+	
+\medskip
+
+	3 x 3 x 3 x 3 regime clusters\\
+	
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Open
+		& Low cases
+		& Rising infection 
+		& Economic recovery
+		 \\
+		\hline
+		Partially open 
+		& Modest cases
+		& Steady infection 
+		& Stagnation 
+		\\
+		\hline
+		Closed 
+		& High cases
+		& Rising infection 
+		& Contraction
+\\
+\hline
+	\end{tabular}
+	
+	\medskip
+	\medskip
+	
+	The degrees of Open, Infection cases, \\  and Economic contraction or recovery \\
+	will depend on what works in making the 'best' cluster sets.  
+	
+\end{frame}
+
+	
+\begin{frame}
+		\frametitle{Conclusion}
+		
+		\begin{itemize}
+			\item first item 
+			\item second bullet point
+			\item last item
+		\end{itemize}
+\end{frame}
+
+
+\end{document} 
